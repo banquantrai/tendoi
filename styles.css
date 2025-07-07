@@ -1,0 +1,117 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Header styles */
+header h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Flashcard styles */
+.flashcard {
+    width: 350px;
+    height: 250px;
+    perspective: 1000px;
+    margin: 20px auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out; /* Smooth flip animation */
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg); /* Flip the card */
+}
+
+.flashcard .front, .flashcard .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.flashcard .front {
+    background-color: #007bff;
+}
+
+.flashcard .back {
+    background-color: #f8f9fa; /* Light background for a friendly look */
+    transform: rotateY(180deg);
+    flex-direction: column;
+    color: #333; /* Dark text for readability */
+    padding: 20px; /* Add padding for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for depth */
+    font-size: 1.2em; /* Adjust font size for better readability */
+}
+
+.flashcard .back img {
+    max-width: 40%; /* Slightly smaller image for better layout */
+    height: auto;
+    border-radius: 10px; /* Rounded corners for a friendly look */
+    margin-bottom: 15px; /* Add spacing below the image */
+}
+
+.flashcard .back p {
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+    color: #555; /* Softer text color for a professional look */
+}
+
+.flashcard img {
+    max-width: 40%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.flashcard p {
+    font-size: 1em;
+    text-align: center;
+    margin: 0;
+}
+
+/* Footer styles */
+.controls {
+    margin-top: 50px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
