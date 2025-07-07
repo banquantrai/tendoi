@@ -1,28 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard Game</title>
+    <title>Game Flashcard - Bát Chánh Đạo</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h2>Hãy đoán ý nghĩa</h2>
-            <h1>SAM MA...</h1>
+            <h2 class="subtitle">🧘‍♂️ Hãy đoán ý nghĩa</h2>
+            <h1 class="title">BÁT CHÁNH ĐẠO</h1>
+            <p class="description">Tám con đường đúng đắn trong Phật học</p>
         </header>
         <main>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="card-counter">
+                <span id="current-card">1</span> / <span id="total-cards">8</span>
+            </div>
             <div class="flashcard" id="flashcard">
-                <div class="front" id="term">SAM MA DI THI</div>
+                <div class="front" id="term">
+                    <div class="term-content">
+                        <span class="term-text">Chánh kiến</span>
+                        <div class="term-subtitle">Thuật ngữ Phật học</div>
+                    </div>
+                </div>
                 <div class="back" id="meaning">
-                    <p>Meaning of SAM MA DI THI</p>
+                    <div class="meaning-content">
+                        <img id="image" src="" alt="" />
+                        <p class="meaning-text"></p>
+                    </div>
                 </div>
             </div>
         </main>
         <footer class="controls">
-            <button id="flip-button">Flip Card</button>
-            <button id="next-button">Next Card</button>
+            <button id="flip-button" class="btn btn-primary">
+                <span class="btn-icon">🔄</span>
+                Lật thẻ
+            </button>
+            <button id="next-button" class="btn btn-secondary">
+                <span class="btn-icon">➡️</span>
+                Thẻ tiếp theo
+            </button>
         </footer>
     </div>
     <script src="app.js"></script>

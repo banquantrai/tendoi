@@ -45,20 +45,32 @@ const flashcards = [
 
 let currentCardIndex = 0;
 
-const termElement = document.getElementById('term');
-const meaningElement = document.getElementById('meaning');
-const imageElement = document.createElement('img'); // Create image dynamically
-imageElement.id = 'image';
-meaningElement.prepend(imageElement); // Add image to the back side dynamically
+// Get elements
+const termElement = document.querySelector('.term-text');
+const meaningElement = document.querySelector('.meaning-text');
+const imageElement = document.getElementById('image');
 const flipButton = document.getElementById('flip-button');
-const nextButton = document.getElementById('next-button'); // Get the Next Card button
+const nextButton = document.getElementById('next-button');
+const progressFill = document.getElementById('progress-fill');
+const currentCardSpan = document.getElementById('current-card');
+const totalCardsSpan = document.getElementById('total-cards');
+
+// Set total cards
+totalCardsSpan.textContent = flashcards.length;
+
+function updateProgress() {
+    const progressPercent = ((currentCardIndex + 1) / flashcards.length) * 100;
+    progressFill.style.width = progressPercent + '%';
+    currentCardSpan.textContent = currentCardIndex + 1;
+}
 
 function showCard() {
     const currentCard = flashcards[currentCardIndex];
     termElement.textContent = currentCard.term;
-    imageElement.src = currentCard.image; // Update image source
-    imageElement.alt = `Image for ${currentCard.term}`; // Update image alt text
-    meaningElement.querySelector('p').textContent = ''; // Clear meaning text for initial state
+    imageElement.src = currentCard.image;
+    imageElement.alt = `Hình ảnh cho ${currentCard.term}`;
+    meaningElement.textContent = '';
+    updateProgress();
 }
 
 function flipCard() {
@@ -67,19 +79,23 @@ function flipCard() {
         console.error('Flashcard element not found!');
         return;
     }
-    flashcardElement.classList.toggle('flipped'); // Toggle the flipped class for animation
+    flashcardElement.classList.toggle('flipped');
     const currentCard = flashcards[currentCardIndex];
-    const meaningText = meaningElement.querySelector('p');
     if (flashcardElement.classList.contains('flipped')) {
-        meaningText.textContent = currentCard.meaning; // Show meaning when flipped
+        meaningElement.textContent = currentCard.meaning;
     } else {
-        meaningText.textContent = ''; // Clear meaning when flipped back
+        meaningElement.textContent = '';
     }
 }
 
 function nextCard() {
-    currentCardIndex = (currentCardIndex + 1) % flashcards.length; // Cycle through flashcards
-    showCard(); // Update the flashcard display
+    currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+    
+    // Reset flip state
+    const flashcardElement = document.getElementById('flashcard');
+    flashcardElement.classList.remove('flipped');
+    
+    showCard();
 }
 
 function verifyImages() {

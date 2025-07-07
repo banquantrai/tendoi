@@ -1,43 +1,101 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
     text-align: center;
-    width: 90%;
-    max-width: 600px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    backdrop-filter: blur(10px);
 }
 
 /* Header styles */
-header h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
+header {
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 2.5em;
+    font-weight: 700;
     color: #333;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+    font-size: 1em;
+    color: #777;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+/* Progress bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    width: 12.5%;
+    transition: width 0.3s ease;
+}
+
+/* Card counter */
+.card-counter {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: 600;
 }
 
 /* Flashcard styles */
 .flashcard {
-    width: 350px;
-    height: 250px;
+    width: 100%;
+    max-width: 400px;
+    height: 280px;
     perspective: 1000px;
-    margin: 20px auto;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.6s ease-in-out; /* Smooth flip animation */
+    transition: transform 0.6s ease-in-out;
+    margin: 0 auto 30px;
 }
 
 .flashcard.flipped {
-    transform: rotateY(180deg); /* Flip the card */
+    transform: rotateY(180deg);
 }
 
 .flashcard .front, .flashcard .back {
@@ -48,70 +106,149 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-size: 1.5em;
-    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
 }
 
 .flashcard .front {
-    background-color: #007bff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.term-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.term-text {
+    font-size: 2.2em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.term-subtitle {
+    font-size: 1em;
+    font-weight: 300;
+    opacity: 0.9;
 }
 
 .flashcard .back {
-    background-color: #f8f9fa; /* Light background for a friendly look */
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     transform: rotateY(180deg);
     flex-direction: column;
-    color: #333; /* Dark text for readability */
-    padding: 20px; /* Add padding for better spacing */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for depth */
-    font-size: 1.2em; /* Adjust font size for better readability */
+    color: #333;
+    padding: 25px;
+}
+
+.meaning-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
 }
 
 .flashcard .back img {
-    max-width: 40%; /* Slightly smaller image for better layout */
+    max-width: 60%;
     height: auto;
-    border-radius: 10px; /* Rounded corners for a friendly look */
-    margin-bottom: 15px; /* Add spacing below the image */
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.flashcard .back p {
-    font-size: 1em;
+.meaning-text {
+    font-size: 1.3em;
+    font-weight: 600;
     text-align: center;
-    margin: 0;
-    color: #555; /* Softer text color for a professional look */
+    color: #444;
+    line-height: 1.4;
 }
 
-.flashcard img {
-    max-width: 40%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.flashcard p {
-    font-size: 1em;
-    text-align: center;
-    margin: 0;
-}
-
-/* Footer styles */
+/* Controls */
 .controls {
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-button {
-    margin: 10px;
-    padding: 10px 20px;
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
     font-size: 1em;
+    font-weight: 600;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-family: 'Nunito', sans-serif;
+    min-width: 140px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-icon {
+    font-size: 1.1em;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .title {
+        font-size: 2em;
+    }
+    
+    .flashcard {
+        height: 250px;
+    }
+    
+    .term-text {
+        font-size: 1.8em;
+    }
+    
+    .meaning-text {
+        font-size: 1.1em;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        min-width: 200px;
+    }
 }
